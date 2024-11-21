@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
 
   <!-- Data Tables -->
-  <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bo otstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 
   @notifyCss
+
   @yield('head')
 </head>
 
@@ -49,7 +50,7 @@
           <a href="#" class="nav-link">User Dashboard</a>
         </li>
 
-        
+
       </ul>
 
       <!-- Right navbar links -->
@@ -102,72 +103,202 @@
       <a href="#" class="brand-link">
         <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
           class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Admin Dashboard</span>
       </a>
 
       <!-- Sidebar -->
-      <div class="sidebar">
+      <div class="sidebar ">
         <!-- Sidebar user panel -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+        <div class="d-flex flex-column">
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+              <a href="#" class="d-block"> {{Auth::user()->name}} </a>
+
+            </div>
           </div>
-          <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+
+         
+
+          <div style="border: 2px solid white" class="">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
           </div>
         </div>
 
         <!-- Sidebar Menu -->
+        
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Dashboard Link -->
-            <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>Dashboard</p>
-              </a>
-            </li>
+
             <!-- Tables Link -->
+            <li class="nav-header">Product & Contact</li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{route('dashboard.product.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
-                <p>Tables</p>
+                <p>Tables Product</p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
+              <a href="{{route('dashboard.contact.index')}}" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>Tables Contact</p>
+              </a>
+            </li>
+
+            <!-- User Settings -->
+            <li class="nav-header">Website Settings</li>
+            <li
+              class="nav-item {{ request()->routeIs('dashboard.users.*') || request()->routeIs('dashboard.roles.*') ? 'menu-open' : '' }}">
+              <a href="#" class="nav-link {{ request()->routeIs('dashboard.users.*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-users"></i>
                 <p>
-                  Forms
+                  User Settings
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/forms/general.html" class="nav-link">
+                  <a href="{{ route('dashboard.users.index') }}"
+                    class="nav-link {{ request()->routeIs('dashboard.users.index') ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>General Elements</p>
+                    <p>Users Pages</p>
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a href="{{ route('dashboard.roles.index') }}"
+                    class="nav-link {{ request()->routeIs('dashboard.roles.index') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Users Roles</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            {{-- Home Settings --}}
+            <li
+              class="nav-item {{ request()->routeIs('dashboard.home-hero-section.*') || request()->routeIs('dashboard.home-easy-section.*') ? 'menu-open' : '' }}">
+              <a href="#"
+                class="nav-link {{ request()->routeIs('dashboard.home-hero-section.*') || request()->routeIs('dashboard.home-easy-section.*')   ? 'active' : '' }}">
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                  Home Settings
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('dashboard.home-hero-section.index') }}"
+                    class="nav-link {{ request()->routeIs('dashboard.home-hero-section.index') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Hero Sections</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('dashboard.home-easy-section.index') }}"
+                    class="nav-link {{ request()->routeIs('dashboard.home-easy-section.index') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Easy Book Sections</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            {{-- About Settings --}}
+            <li
+              class="nav-item {{ request()->routeIs('dashboard.about_company_section.*') || request()->routeIs('dashboard.about_hero_section.*') ? 'menu-open' : '' }}">
+              <a href="#"
+                class="nav-link {{ request()->routeIs('dashboard.about_company_section.*') || request()->routeIs('dashboard.about_hero_section.*')   ? 'active' : '' }}">
+                <i class="nav-icon fas fa-circle"></i>
+                <p>
+                  About Settings
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+
+                <li class="nav-item">
+                  <a href="{{ route('dashboard.about_hero_section.index') }}"
+                    class="nav-link {{ request()->routeIs('dashboard.about_hero_section.index') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>About Hero Section</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="{{ route('dashboard.about_company_section.index') }}"
+                    class="nav-link {{ request()->routeIs('dashboard.about_company_section.index') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>About Company Sections</p>
+                  </a>
+                </li>
+                {{-- <li class="nav-item">
+                  <a href="{{ route('dashboard.about_team_section.index') }}"
+                    class="nav-link {{ request()->routeIs('dashboard.about_team_section.index') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>About Team Sections</p>
+                  </a>
+                </li> --}}
+
+                <li class="nav-item">
+                  <a href="{{ route('dashboard.about_testimoni_section.index') }}"
+                    class="nav-link {{ request()->routeIs('dashboard.about_testimoni_section.index') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>About Testimoni Sections</p>
+                  </a>
+                </li>
+                
+              </ul>
+            </li>
+
+            <li class="nav-item  {{ request()->routeIs('dashboard.blogss.*') ? 'menu-open' : '' }}">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Web Settings
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+
+                <li class="nav-item">
                   <a href="pages/forms/advanced.html" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Advanced Elements</p>
+                    <p>Product </p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="pages/forms/editors.html" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Editors</p>
+                    <p>About</p>
                   </a>
                 </li>
+
                 <li class="nav-item">
-                  <a href="pages/forms/validation.html" class="nav-link">
+                  <a href="{{route('dashboard.blogs.index')}}"
+                    class="nav-link {{ request()->routeIs('dashboard.blogs.*') ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Validation</p>
+                    <p>Blog</p>
                   </a>
                 </li>
+
+                <li class="nav-item">
+                  <a href="pages/forms/editors.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Contact</p>
+                  </a>
+                </li>
+
               </ul>
             </li>
             <!-- More items... -->
