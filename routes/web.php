@@ -41,7 +41,7 @@ Auth::routes();
 // Frontend Website
 Route::get('/',[FEHomeController::class, 'index'])->name('fe.home');
 Route::get('/about',[FEAboutController::class, 'index'])->name('fe.about');
-Route::get('/product',[FEProductController::class, 'index'])->name('fe.product');
+Route::get('/products',[FEProductController::class, 'index'])->name('fe.products');
 Route::get('/blog',[FEBlogController::class, 'index'])->name('fe.blog');
 Route::get('/contact',[FEContactController::class, 'index'])->name('fe.contact');
   

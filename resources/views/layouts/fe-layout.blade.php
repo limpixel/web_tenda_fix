@@ -18,7 +18,7 @@
                 </div>
                 <nav class="space-x-6 hidden md:block">
                     <a href="{{ route('fe.home') }}">Home</a>
-                    <a href="{{route('fe.product')}}" class="text-gray-700 hover:text-blue-500">Product</a>
+                    <a href="{{route('fe.products')}}" class="text-gray-700 hover:text-blue-500">Product</a>
                     <a href="{{route('fe.about')}}" class="text-gray-700 hover:text-blue-500">About</a>
                     <a href="{{route('fe.contact')}}" class="text-gray-700 hover:text-blue-500">Contact</a>
                 </nav>
@@ -52,7 +52,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
             <nav class="flex flex-col p-4 space-y-2">
                 <a href="{{route('fe.home')}}" class="text-gray-700 hover:text-blue-500">Home</a>
-                <a href="{{route('fe.product')}}" class="text-gray-700 hover:text-blue-500">Product</a>
+                <a href="{{route('fe.products')}}" class="text-gray-700 hover:text-blue-500">Product</a>
                 <a href="{{route('fe.about')}}" class="text-gray-700 hover:text-blue-500">About</a>
                 <a href="{{route('fe.contact')}}" class="text-gray-700 hover:text-blue-500">Contact</a>
                 @guest
