@@ -17,3 +17,8 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Ignore baru docker
+.DS_Store
+Dockerfile
+docker-compose.yml

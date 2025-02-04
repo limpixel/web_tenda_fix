@@ -39,11 +39,11 @@ use App\Livewire\RoleManagement;
 Auth::routes();
 
 // Frontend Website
-Route::get('/',[FEHomeController::class, 'index'])->name('fe.home');
-Route::get('/about',[FEAboutController::class, 'index'])->name('fe.about');
-Route::get('/products',[FEProductController::class, 'index'])->name('fe.products');
-Route::get('/blog',[FEBlogController::class, 'index'])->name('fe.blog');
-Route::get('/contact',[FEContactController::class, 'index'])->name('fe.contact');
+Route::get('/',[FEHomeController::class, 'index'])->name('home');
+Route::get('/about',[FEAboutController::class, 'index'])->name('about');
+Route::get('/products',[FEProductController::class, 'index'])->name('products');
+Route::get('/blog',[FEBlogController::class, 'index'])->name('blog');
+Route::get('/contact',[FEContactController::class, 'index'])->name('contact');
   
 Route::get('/home', [HomeController::class, 'index'])->name('dashboard.home');
 Route::get('/role-management', RoleManagement::class)->middleware('auth');
