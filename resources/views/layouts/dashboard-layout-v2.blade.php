@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard 2</title>
+  <title>@yield('head')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
+  <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="./assets/compiled/css/table-datatable-jquery.css">
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Theme style -->
@@ -24,7 +27,7 @@
 
   @notifyCss
 
-  @yield('head')
+  
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -141,7 +144,7 @@
             <!-- Dashboard Link -->
 
             <!-- Tables Link -->
-            <li class="nav-header">Product & Contact</li>
+            <!-- <li class="nav-header">Product & Contact</li> -->
             <li class="nav-item">
               <a href="{{route('dashboard.product.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
@@ -152,9 +155,16 @@
             <li class="nav-item">
               <a href="{{route('dashboard.contact.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
-                <p>Tables Contact</p>
+                <p>Contact Settings</p>
               </a>
             </li>
+
+            <!-- <li class="nav-item">
+              <a href="{{route('dashboard.contact.index')}}" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>Tables Contact</p>
+              </a>
+            </li> -->
 
             <!-- User Settings -->
             <li class="nav-header">Website Settings</li>
@@ -272,11 +282,13 @@
               <ul class="nav nav-treeview">
 
                 <li class="nav-item">
-                  <a href="pages/forms/advanced.html" class="nav-link">
+                  <a href="{{route('dashboard.product.index')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Product </p>
                   </a>
                 </li>
+
+                
                 <li class="nav-item">
                   <a href="pages/forms/editors.html" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
@@ -344,6 +356,12 @@
       <strong>Copyright &copy; 2024 <a href="#">Your Company</a>.</strong> All rights reserved.
     </footer>
   </div>
+
+  {{-- jQuery Database  --}}
+    <script src="assets/extensions/jquery/jquery.min.js"></script>
+    <script src="assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="assets/static/js/pages/datatables.js"></script>
 
   <!-- REQUIRED SCRIPTS -->
   <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>

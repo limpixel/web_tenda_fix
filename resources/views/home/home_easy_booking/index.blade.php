@@ -21,6 +21,8 @@
                         <i class="fa fa-plus"></i> Add New
                     </a>
                     @endif
+
+                    
                 </div>
                 <!-- Table -->
                 <div class="box-body">

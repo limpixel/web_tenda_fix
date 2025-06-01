@@ -119,341 +119,98 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Product Card -->
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <div class="relative">
-                        <img src="../../../src/images/home/product_tenda_dekorasi.png" alt="Tenda Standard"
-                            class="rounded-lg h-72 w-full">
-                        <div class="absolute top-2 left-2 flex items-center gap-2">
-                            <span
-                                class="flex items-center gap-2  bg-white border-[1.2px] border-[#9E9E9E]/50 text-xs px-2 py-[4.5px] rounded">
-                                <?xml style="color: yellow;" version="1.0" encoding="UTF-8"?>
-                                <svg width="14" height="14" viewBox="0 0 48 48" fill="#FFDE4D"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M23.9986 5L17.8856 17.4776L4 19.4911L14.0589 29.3251L11.6544 43L23.9986 36.4192L36.3454 43L33.9586 29.3251L44 19.4911L30.1913 17.4776L23.9986 5Z"
-                                        fill="#FFDE4D" stroke="#FFDE4D" stroke-width="4" stroke-linejoin="round" />
-                                </svg>
-                                <div class="">
-                                    4.8 <span class="text-black/40">( 108 )</span>
-                                </div>
-                            </span>
-                            <span class=" left-28 bg-[#DFF2DE] text-[#E4003A] text-xs px-2 py-[4.5px] rounded">Available
-                                Now</span>
+                @foreach ($product as $product)
+                    <div class="group relative bg-white p-4 rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                        <div class="relative">
+                            <img src="{{ asset('images/products/' . $product->image) }}" 
+                                alt="{{ $product->name_product }}"
+                                class="rounded-lg h-72 w-full object-cover">
+
+                            <div class="absolute top-2 left-2 flex items-center gap-2 z-10">
+                                <span class="flex items-center gap-2 bg-white border-[1.2px] border-[#9E9E9E]/50 text-xs px-2 py-[4.5px] rounded">
+                                    <svg width="14" height="14" viewBox="0 0 48 48" fill="#FFDE4D"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M23.9986 5L17.8856 17.4776L4 19.4911L14.0589 29.3251L11.6544 43L23.9986 36.4192L36.3454 43L33.9586 29.3251L44 19.4911L30.1913 17.4776L23.9986 5Z"
+                                            fill="#FFDE4D" stroke="#FFDE4D" stroke-width="4" stroke-linejoin="round" />
+                                    </svg>
+                                    <div>4.8 <span class="text-black/40">( 108 )</span></div>
+                                </span>
+
+                                <span class="bg-[#DFF2DE] text-[#E4003A] text-xs px-2 py-[4.5px] rounded">Available Now</span>
+                            </div>
                         </div>
+
+                        <div class="mt-4">
+                            <div class="flex justify-between py-2 border-b-[1.5px]">
+                                <h3 class="font-semibold">{{ $product->name_product }}</h3>
+                                <p class="text-gray-500">
+                                    Rp. {{ number_format($product->harga, 0, ',', '.') }} / m²
+                                </p>
+                            </div>
+
+                            <div class="mt-1 grid grid-cols-2 gap-y-6 gap-x-4 py-4 text-gray-700 text-sm">
+                                <span class="flex items-center gap-2">
+                                    <svg width="20" height="20" viewBox="0 0 48 48" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M44 14L24 4L4 14V34L24 44L44 34V14Z" stroke="#333" stroke-width="4"
+                                            stroke-linejoin="round" />
+                                        <path d="M4 14L24 24" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M24 44V24" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M44 14L24 24" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M34 9L14 19" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    {{ $product->tipe }}
+                                </span>
+
+                                <span class="flex items-center gap-2">
+                                    <svg width="20" height="20" viewBox="0 0 48 48" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M33 6H42V15" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M42 33V42H33" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M15 42H6V33" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M6 15V6H15" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    {{ $product->ukuran }} m²
+                                </span>
+
+                                <span class="flex items-center gap-2">
+                                    <svg width="20" height="20" viewBox="0 0 48 48" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="24" cy="28" r="16" fill="none" stroke="#333" stroke-width="4" />
+                                        <path d="M28 4L20 4" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M24 4V12" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M35 16L38 13" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M24 28V22" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M24 28H18" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    {{ $product->masa_waktu }} Hari
+                                </span>
+                            </div>
+                        </div>
+
+                        {{-- Hover WhatsApp Button --}}
+                        <a href="https://wa.me/628115133959?text={{ urlencode('Halo Admin, saya tertarik dengan produk ' . $product->name_product) }}"
+                        target="_blank"
+                        class="absolute -bottom-12 group-hover:bottom-4 left-4 right-4 transition-all duration-300 bg-green-500 hover:bg-green-600 text-white text-center text-sm py-2 rounded-lg z-20 shadow-md">
+                            Hubungi Admin via WhatsApp
+                        </a>
                     </div>
-
-                    <div class="mt-4">
-                        <div class="flex justify-between py-2 border-b-[1.5px] ">
-                            <h3 class="font-semibold">Tenda Standard</h3>
-                            <p class="text-gray-500">Rp. 45,000 / m²</p>
-                        </div>
-
-                        <div class="mt-1 grid grid-cols-2 gap-y-6 gap-x-4 py-4">
-                            <span class="text-gray-700 flex items-center gap-2 ">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M44 14L24 4L4 14V34L24 44L44 34V14Z" stroke="#333" stroke-width="4"
-                                        stroke-linejoin="round" />
-                                    <path d="M4 14L24 24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 44V24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M44 14L24 24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M34 9L14 19" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                Dekorasi
-                            </span>
-                            <span class="text-gray-700 flex items-center gap-2 ">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M33 6H42V15" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M42 33V42H33" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M15 42H6V33" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M6 15V6H15" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                2 m²
-                            </span>
-                            <span class="text-gray-700 flex items-center gap-2">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="24" cy="28" r="16" fill="none" stroke="#333" stroke-width="4" />
-                                    <path d="M28 4L20 4" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 4V12" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M35 16L38 13" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 28V22" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 28H18" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                1 Days
-                            </span>
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <div class="relative">
-                        <img src="../../../src/images/home/product_tenda_dekorasi.png" alt="Tenda Standard"
-                            class="rounded-lg h-72 w-full">
-                        <div class="absolute top-2 left-2 flex items-center gap-2">
-                            <span
-                                class="flex items-center gap-2  bg-white border-[1.2px] border-[#9E9E9E]/50 text-xs px-2 py-[4.5px] rounded">
-                                <?xml style="color: yellow;" version="1.0" encoding="UTF-8"?>
-                                <svg width="14" height="14" viewBox="0 0 48 48" fill="#FFDE4D"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M23.9986 5L17.8856 17.4776L4 19.4911L14.0589 29.3251L11.6544 43L23.9986 36.4192L36.3454 43L33.9586 29.3251L44 19.4911L30.1913 17.4776L23.9986 5Z"
-                                        fill="#FFDE4D" stroke="#FFDE4D" stroke-width="4" stroke-linejoin="round" />
-                                </svg>
-                                <div class="">
-                                    4.8 <span class="text-black/40">( 108 )</span>
-                                </div>
-                            </span>
-                            <span class=" left-28 bg-[#DFF2DE] text-[#E4003A] text-xs px-2 py-[4.5px] rounded">Available
-                                Now</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <div class="flex justify-between py-2 border-b-[1.5px] ">
-                            <h3 class="font-semibold">Tenda Standard</h3>
-                            <p class="text-gray-500">Rp. 45,000 / m²</p>
-                        </div>
-
-                        <div class="mt-1 grid grid-cols-2 gap-y-6 gap-x-4 py-4">
-                            <span class="text-gray-700 flex items-center gap-2 ">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M44 14L24 4L4 14V34L24 44L44 34V14Z" stroke="#333" stroke-width="4"
-                                        stroke-linejoin="round" />
-                                    <path d="M4 14L24 24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 44V24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M44 14L24 24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M34 9L14 19" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                Dekorasi
-                            </span>
-                            <span class="text-gray-700 flex items-center gap-2 ">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M33 6H42V15" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M42 33V42H33" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M15 42H6V33" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M6 15V6H15" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                2 m²
-                            </span>
-                            <span class="text-gray-700 flex items-center gap-2">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="24" cy="28" r="16" fill="none" stroke="#333" stroke-width="4" />
-                                    <path d="M28 4L20 4" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 4V12" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M35 16L38 13" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 28V22" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 28H18" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                1 Days
-                            </span>
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <div class="relative">
-                        <img src="../../../src/images/home/product_tenda_dekorasi.png" alt="Tenda Standard"
-                            class="rounded-lg h-72 w-full">
-                        <div class="absolute top-2 left-2 flex items-center gap-2">
-                            <span
-                                class="flex items-center gap-2  bg-white border-[1.2px] border-[#9E9E9E]/50 text-xs px-2 py-[4.5px] rounded">
-                                <?xml style="color: yellow;" version="1.0" encoding="UTF-8"?>
-                                <svg width="14" height="14" viewBox="0 0 48 48" fill="#FFDE4D"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M23.9986 5L17.8856 17.4776L4 19.4911L14.0589 29.3251L11.6544 43L23.9986 36.4192L36.3454 43L33.9586 29.3251L44 19.4911L30.1913 17.4776L23.9986 5Z"
-                                        fill="#FFDE4D" stroke="#FFDE4D" stroke-width="4" stroke-linejoin="round" />
-                                </svg>
-                                <div class="">
-                                    4.8 <span class="text-black/40">( 108 )</span>
-                                </div>
-                            </span>
-                            <span class=" left-28 bg-[#DFF2DE] text-[#E4003A] text-xs px-2 py-[4.5px] rounded">Available
-                                Now</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <div class="flex justify-between py-2 border-b-[1.5px] ">
-                            <h3 class="font-semibold">Tenda Standard</h3>
-                            <p class="text-gray-500">Rp. 45,000 / m²</p>
-                        </div>
-
-                        <div class="mt-1 grid grid-cols-2 gap-y-6 gap-x-4 py-4">
-                            <span class="text-gray-700 flex items-center gap-2 ">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M44 14L24 4L4 14V34L24 44L44 34V14Z" stroke="#333" stroke-width="4"
-                                        stroke-linejoin="round" />
-                                    <path d="M4 14L24 24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 44V24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M44 14L24 24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M34 9L14 19" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                Dekorasi
-                            </span>
-                            <span class="text-gray-700 flex items-center gap-2 ">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M33 6H42V15" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M42 33V42H33" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M15 42H6V33" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M6 15V6H15" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                2 m²
-                            </span>
-                            <span class="text-gray-700 flex items-center gap-2">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="24" cy="28" r="16" fill="none" stroke="#333" stroke-width="4" />
-                                    <path d="M28 4L20 4" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 4V12" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M35 16L38 13" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 28V22" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 28H18" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                1 Days
-                            </span>
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <div class="relative">
-                        <img src="../../../src/images/home/product_tenda_dekorasi.png" alt="Tenda Standard"
-                            class="rounded-lg h-72 w-full">
-                        <div class="absolute top-2 left-2 flex items-center gap-2">
-                            <span
-                                class="flex items-center gap-2  bg-white border-[1.2px] border-[#9E9E9E]/50 text-xs px-2 py-[4.5px] rounded">
-                                <?xml style="color: yellow;" version="1.0" encoding="UTF-8"?>
-                                <svg width="14" height="14" viewBox="0 0 48 48" fill="#FFDE4D"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M23.9986 5L17.8856 17.4776L4 19.4911L14.0589 29.3251L11.6544 43L23.9986 36.4192L36.3454 43L33.9586 29.3251L44 19.4911L30.1913 17.4776L23.9986 5Z"
-                                        fill="#FFDE4D" stroke="#FFDE4D" stroke-width="4" stroke-linejoin="round" />
-                                </svg>
-                                <div class="">
-                                    4.8 <span class="text-black/40">( 108 )</span>
-                                </div>
-                            </span>
-                            <span class=" left-28 bg-[#DFF2DE] text-[#E4003A] text-xs px-2 py-[4.5px] rounded">Available
-                                Now</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <div class="flex justify-between py-2 border-b-[1.5px] ">
-                            <h3 class="font-semibold">Tenda Standard</h3>
-                            <p class="text-gray-500">Rp. 45,000 / m²</p>
-                        </div>
-
-                        <div class="mt-1 grid grid-cols-2 gap-y-6 gap-x-4 py-4">
-                            <span class="text-gray-700 flex items-center gap-2 ">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M44 14L24 4L4 14V34L24 44L44 34V14Z" stroke="#333" stroke-width="4"
-                                        stroke-linejoin="round" />
-                                    <path d="M4 14L24 24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 44V24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M44 14L24 24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M34 9L14 19" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                Dekorasi
-                            </span>
-                            <span class="text-gray-700 flex items-center gap-2 ">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M33 6H42V15" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M42 33V42H33" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M15 42H6V33" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M6 15V6H15" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                2 m²
-                            </span>
-                            <span class="text-gray-700 flex items-center gap-2">
-                                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="24" cy="28" r="16" fill="none" stroke="#333" stroke-width="4" />
-                                    <path d="M28 4L20 4" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 4V12" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M35 16L38 13" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 28V22" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M24 28H18" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                1 Days
-                            </span>
-                        </div>
-
-
-                    </div>
-                </div>
-
-
+                @endforeach
             </div>
+
         </div>
     </div>
 </div>

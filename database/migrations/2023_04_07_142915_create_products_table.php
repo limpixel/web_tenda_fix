@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->integer('satuan');
             $table->string('tipe');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

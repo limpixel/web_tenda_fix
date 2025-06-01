@@ -30,7 +30,7 @@ use App\Http\Controllers\Frontend\Web\FEAboutController;
 use App\Livewire\RoleManagement;
 
 
-
+use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -39,11 +39,13 @@ use App\Livewire\RoleManagement;
 Auth::routes();
 
 // Frontend Website
-Route::get('/',[FEHomeController::class, 'index'])->name('rumah');
-Route::get('/about',[FEAboutController::class, 'index'])->name('tentang');
-Route::get('/products',[FEProductController::class, 'index'])->name('produk');
-Route::get('/blog',[FEBlogController::class, 'index'])->name('blogging');
-Route::get('/contact',[FEContactController::class, 'index'])->name('kontak');
+
+// Frontend Website
+Route::get('/', [FEHomeController::class, 'index'])->name('halaman-depan');
+Route::get('/about', [FEAboutController::class, 'index'])->name('tentang');
+Route::get('/products', [FEProductController::class, 'index'])->name('produk');
+Route::get('/blog', [FEBlogController::class, 'index'])->name('blogging');
+Route::get('/kontak', [FEContactController::class, 'index'])->name('kontak');
   
 Route::get('/home', [HomeController::class, 'index'])->name('dashboard.home');
 Route::get('/role-management', RoleManagement::class)->middleware('auth');

@@ -14,13 +14,13 @@
         <div class="container mx-auto flex justify-between items-center p-4">
             <div class="flex items-center gap-8">
                 <div class="text-2xl font-bold text-blue-500">
-                    <a href="{{route('fe.home')}}">Logo</a>
+                    <a href="{{route('halaman-depan')}}">Logo</a>
                 </div>
                 <nav class="space-x-6 hidden md:block">
-                    <a href="{{ route('fe.home') }}">Home</a>
-                    <a href="{{route('fe.products')}}" class="text-gray-700 hover:text-blue-500">Product</a>
-                    <a href="{{route('fe.about')}}" class="text-gray-700 hover:text-blue-500">About</a>
-                    <a href="{{route('fe.contact')}}" class="text-gray-700 hover:text-blue-500">Contact</a>
+                    <a href="{{ route('halaman-depan') }}">Home</a>
+                    <a href="{{ route('produk') }}" class="text-gray-700 hover:text-blue-500">Product</a>
+                    <a href="{{route('tentang')}}" class="text-gray-700 hover:text-blue-500">About</a>
+                    <a href="{{ route('kontak') }}" class="text-gray-700 hover:text-blue-500">Contact</a>
                 </nav>
             </div>
             <div class="space-x-4 hidden md:block">
@@ -51,10 +51,10 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
             <nav class="flex flex-col p-4 space-y-2">
-                <a href="{{route('fe.home')}}" class="text-gray-700 hover:text-blue-500">Home</a>
-                <a href="{{route('fe.products')}}" class="text-gray-700 hover:text-blue-500">Product</a>
-                <a href="{{route('fe.about')}}" class="text-gray-700 hover:text-blue-500">About</a>
-                <a href="{{route('fe.contact')}}" class="text-gray-700 hover:text-blue-500">Contact</a>
+                <a href="{{route('halaman-depan')}}" class="text-gray-700 hover:text-blue-500">Home</a>
+                <a href="{{ route('produk') }}" class="text-gray-700 hover:text-blue-500">Product</a>
+                <a href="{{route('blogging')}}" class="text-gray-700 hover:text-blue-500">About</a>
+                <a href="{{route('kontak')}}" class="text-gray-700 hover:text-blue-500">Contact</a>
                 @guest
                     
 

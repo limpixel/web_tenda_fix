@@ -13,9 +13,9 @@
                         <h3 class="card-title col-9">DataTable User Roles</h3>
 
                         <div class="">
-                            @can('role-create')
+                            
                             <a class="btn btn-success" href="{{ route('dashboard.roles.create') }}"> Create New Role</a>
-                            @endcan
+                            
                         </div>
                     </div>
                     <!-- /.card-header -->

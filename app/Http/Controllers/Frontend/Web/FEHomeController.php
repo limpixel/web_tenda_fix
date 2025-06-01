@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Web\HomeEasyBookingModel;
 use App\Models\Web\HomeHeroSectionModel;
+use App\Models\Product;
+
 use Illuminate\Http\Request;
 
 class FEHomeController extends Controller
@@ -16,7 +18,8 @@ class FEHomeController extends Controller
     {
         $heroSections = HomeHeroSectionModel::all();
         $HomeEasyBook = HomeEasyBookingModel::paginate(10); // Tambahkan pagination
-        return view('web.home', compact('heroSections', 'HomeEasyBook'));
+        $product = Product::all();
+        return view('web.home', compact('heroSections', 'HomeEasyBook', 'product'));
     }
 
     /**

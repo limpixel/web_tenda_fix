@@ -15,7 +15,8 @@
         </p>
     </div>
     <div class="w-full h-[50vh] md:h-[70vh] lg:h-[90vh]">
-        <img src="{{asset('images/home/hero_section.png')}}" alt="Hero Section Image" class="h-full w-full object-cover">
+        <img src="{{asset('images/home/home_hero_section/' . $heroSections->image)}}" alt="Hero Section Image" class="h-full w-full object-cover">
+        {{-- <img src="{{ asset('images/home/home_hero_section/' . $heroSections->image) }}" alt="Image" width="100"> --}}
     </div>
     @endforeach
 </section>
@@ -116,179 +117,49 @@
 
         <div class=" mx-6 mt-8  lg:col-span-2 lg:mx-0">
             <div id="keen-slider" class="keen-slider">
-                <div class="keen-slider__slide rounded-2xl border-[0.5px]">
-                    <blockquote class="flex flex-col justify-between h-full bg-white shadow-sm">
-                        <div>
-                            <div class="flex gap-0.5 text-green-500">
-                                <img src="{{asset('images/home/product_tenda_dekorasi.png')}}" alt="Tenda Dekorasi"
-                                    class="w-full object-cover rounded-t-2xl">
-                            </div>
+                @foreach ($product as $product)
+                    <div class="keen-slider__slide rounded-2xl border-[0.5px]">
+                        <blockquote class="flex flex-col justify-between h-full bg-white shadow-sm">
+                            <div>
+                                <div class="flex gap-0.5 text-green-500">
+                                    <img src="{{ asset('images/products/' . $product->image) }}"
+                                        alt="{{ $product->name_product }}"
+                                        class="w-full object-cover rounded-t-2xl">
+                                </div>
 
-                            <div class="mt-2 p-4 sm:p-6 lg:p-8 flex flex-col gap-3">
-                                <div class="text-lg font-semibold">Tenda Dekorasi</div>
-                                <p class="text-black text-lg font-bold">Rp. 190,00 / m<sup>2</sup></p>
+                                <div class="mt-2 p-4 sm:p-6 lg:p-8 flex flex-col gap-3">
+                                    <div class="text-lg font-semibold">{{ $product->name_product }}</div>
 
-                                <div class="flex items-center gap-2 text-gray-600">
-                                    <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
-                                        <path
-                                            d="M24 44C33.3888 44 41 36.3888 41 27C41 17.6112 33.3888 10 24 10C14.6112 10 7 17.6112 7 27C7 36.3888 14.6112 44 24 44Z"
-                                            fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round" />
-                                        <path d="M18 4H30" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M24 19V27" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M32 27H24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M24 4V8" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    <div>3 - 4 Days</div>
+                                    <p class="text-black text-lg font-bold">
+                                        Rp. {{ number_format($product->harga, 0, ',', '.') }} /
+                                        m<sup>2</sup>
+                                    </p>
+
+                                    <div class="flex items-center gap-2 text-gray-600">
+                                        <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
+                                            <path d="M24 44C33.3888 44 41 36.3888 41 27C41 17.6112 33.3888 10 24 10C14.6112 10 7 17.6112 7 27C7 36.3888 14.6112 44 24 44Z"
+                                                fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round" />
+                                            <path d="M18 4H30" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M24 19V27" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M32 27H24" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M24 4V8" stroke="#333" stroke-width="4" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+
+                                        <div>{{ $product->masa_waktu }} Hari</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </blockquote>
-                </div>
-
-                <div class="keen-slider__slide rounded-2xl border-[0.5px]">
-                    <blockquote class="flex flex-col justify-between h-full bg-white shadow-sm">
-                        <div>
-                            <div class="flex gap-0.5 text-green-500">
-                                <img src="{{asset('images/home/product_tenda_dekorasi.png')}}" alt="Tenda Dekorasi"
-                                    class="w-full object-cover rounded-t-2xl">
-                            </div>
-
-                            <div class="mt-2 p-4 sm:p-6 lg:p-8 flex flex-col gap-3">
-                                <div class="text-lg font-semibold">Tenda Dekorasi</div>
-                                <p class="text-black text-lg font-bold">Rp. 190,00 / m<sup>2</sup></p>
-
-                                <div class="flex items-center gap-2 text-gray-600">
-                                    <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
-                                        <path
-                                            d="M24 44C33.3888 44 41 36.3888 41 27C41 17.6112 33.3888 10 24 10C14.6112 10 7 17.6112 7 27C7 36.3888 14.6112 44 24 44Z"
-                                            fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round" />
-                                        <path d="M18 4H30" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M24 19V27" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M32 27H24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M24 4V8" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    <div>3 - 4 Days</div>
-                                </div>
-                            </div>
-                        </div>
-                    </blockquote>
-                </div>
-
-                <div class="keen-slider__slide rounded-2xl border-[0.5px] ">
-                    <blockquote class="flex flex-col justify-between h-full bg-white shadow-sm">
-                        <div>
-                            <div class="flex gap-0.5 text-green-500">
-                                <img src="{{asset('images/home/product_tenda_dekorasi.png')}}" alt="Tenda Dekorasi"
-                                    class=" w-full object-cover rounded-t-2xl">
-                            </div>
-
-                            <div class="mt-2 p-4 sm:p-6 lg:p-8 flex flex-col gap-3">
-                                <div class="text-lg font-semibold">Tenda Dekorasi</div>
-                                <p class="text-black text-lg font-bold">Rp. 190,00 / m<sup>2</sup></p>
-
-                                <div class="flex items-center gap-2 text-gray-600">
-                                    <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
-                                        <path
-                                            d="M24 44C33.3888 44 41 36.3888 41 27C41 17.6112 33.3888 10 24 10C14.6112 10 7 17.6112 7 27C7 36.3888 14.6112 44 24 44Z"
-                                            fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round" />
-                                        <path d="M18 4H30" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M24 19V27" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M32 27H24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M24 4V8" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    <div>3 - 4 Days</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </blockquote>
-                </div>
-
-                <div class="keen-slider__slide rounded-2xl border-[0.5px] ">
-                    <blockquote class="flex flex-col justify-between h-full bg-white shadow-sm">
-                        <div>
-                            <div class="flex gap-0.5 text-green-500">
-                                <img src="{{asset('images/home/product_tenda_dekorasi.png')}}" alt="Tenda Dekorasi"
-                                    class=" w-full object-cover rounded-t-2xl">
-                            </div>
-
-                            <div class="mt-2 p-4 sm:p-6 lg:p-8 flex flex-col gap-3">
-                                <div class="text-lg font-semibold">Tenda Dekorasi</div>
-                                <p class="text-black text-lg font-bold">Rp. 190,00 / m<sup>2</sup></p>
-
-                                <div class="flex items-center gap-2 text-gray-600">
-                                    <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
-                                        <path
-                                            d="M24 44C33.3888 44 41 36.3888 41 27C41 17.6112 33.3888 10 24 10C14.6112 10 7 17.6112 7 27C7 36.3888 14.6112 44 24 44Z"
-                                            fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round" />
-                                        <path d="M18 4H30" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M24 19V27" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M32 27H24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M24 4V8" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    <div>3 - 4 Days</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </blockquote>
-                </div>
-
-                <div class="keen-slider__slide rounded-2xl border-[0.5px] ">
-                    <blockquote class="flex flex-col justify-between h-full bg-white shadow-sm">
-                        <div>
-                            <div class="flex gap-0.5 text-green-500">
-                                <img src="{{asset('images/home/product_tenda_dekorasi.png')}}" alt="Tenda Dekorasi"
-                                    class=" w-full object-cover rounded-t-2xl">
-                            </div>
-
-                            <div class="mt-2 p-4 sm:p-6 lg:p-8 flex flex-col gap-3">
-                                <div class="text-lg font-semibold">Tenda Dekorasi</div>
-                                <p class="text-black text-lg font-bold">Rp. 190,00 / m<sup>2</sup></p>
-
-                                <div class="flex items-center gap-2 text-gray-600">
-                                    <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
-                                        <path
-                                            d="M24 44C33.3888 44 41 36.3888 41 27C41 17.6112 33.3888 10 24 10C14.6112 10 7 17.6112 7 27C7 36.3888 14.6112 44 24 44Z"
-                                            fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round" />
-                                        <path d="M18 4H30" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M24 19V27" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M32 27H24" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M24 4V8" stroke="#333" stroke-width="4" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    <div>3 - 4 Days</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </blockquote>
-                </div>
+                        </blockquote>
+                    </div>
+                @endforeach
             </div>
+
+
         </div>
     </div>
 </section>
