@@ -210,10 +210,14 @@
             looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution.
         </p>
         <div class="mt-6">
-            <a href="#" class="inline-block px-6 py-3 text-white bg-blue-500 rounded-lg shadow-lg hover:bg-blue-600">
-                Contact Us
-            </a>
+            @if ($contact)
+                <a href="https://wa.me/{{ '62' . ltrim($contact->nomor_wa, '0') }}?text={{ urlencode('Halo Admin, saya tertarik dengan produk Anda') }}"
+                    class="inline-block px-6 py-3 text-white bg-blue-500 rounded-lg shadow-lg hover:bg-blue-600">
+                    Contact Us
+                </a>
+            @endif
         </div>
+
     </div>
 </section>
 
@@ -240,7 +244,7 @@
 </div>
 
 <!-- Tambahkan BotMan Web Widget -->
-<script>
+{{-- <script>
     var botmanWidget = {
         frameEndpoint: '/botman/chat',
         introMessage: "👋 Selamat datang di sistem management! Ada yang bisa saya bantu?",
@@ -249,6 +253,6 @@
         buttonText: "Chat dengan Bot",
     };
 </script>
-<script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script> --}}
 
 @endsection

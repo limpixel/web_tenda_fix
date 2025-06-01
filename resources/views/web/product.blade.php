@@ -202,11 +202,13 @@
                         </div>
 
                         {{-- Hover WhatsApp Button --}}
-                        <a href="https://wa.me/628115133959?text={{ urlencode('Halo Admin, saya tertarik dengan produk ' . $product->name_product) }}"
-                        target="_blank"
-                        class="absolute -bottom-12 group-hover:bottom-4 left-4 right-4 transition-all duration-300 bg-green-500 hover:bg-green-600 text-white text-center text-sm py-2 rounded-lg z-20 shadow-md">
-                            Hubungi Admin via WhatsApp
+                        @if ($contact )
+                        <a href="https://wa.me/{{$contact->nomor_wa}}?text={{ urlencode('Halo Admin, saya tertarik dengan produk ' . $product->name_product) }}"
+                            target="_blank"
+                            class="absolute -bottom-12 group-hover:bottom-4 left-4 right-4 transition-all duration-300 bg-green-500 hover:bg-green-600 text-white text-center text-sm py-2 rounded-lg z-20 shadow-md">
+                                Hubungi Admin via WhatsApp
                         </a>
+                        @endif
                     </div>
                 @endforeach
             </div>

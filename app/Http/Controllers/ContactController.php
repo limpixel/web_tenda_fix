@@ -28,7 +28,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nomor_wa' => 'required|integer',
+            'nomor_wa' => 'required|string',
             'gmail' => 'required|string'
         ]);
 
@@ -53,7 +53,7 @@ class ContactController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nomor_wa' => 'required|integer',
+            'nomor_wa' => 'required|string',
             'gmail' => 'required|string'
         ]);
 

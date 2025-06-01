@@ -12,7 +12,7 @@
                     You only need a passport.
                 </p>
 
-                <form class="mt-8 space-y-6">
+                <form id="whatsappForm" class="mt-8 space-y-6">
                     <div>
                         <h3 class="text-lg font-medium text-gray-900">Contacts</h3>
                         <p class="text-sm text-gray-500">
@@ -21,15 +21,7 @@
                     </div>
 
                     <!-- Email Input -->
-                    <div class="flex items-center border-b border-gray-300 py-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6 text-gray-500">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21.75 7.5l-9.877 6.585c-.542.361-1.204.361-1.746 0L.75 7.5m21 0v9.75a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V7.5m19.5 0L12 13.5 1.5 7.5" />
-                        </svg>
-                        <input type="email" class="ml-4 w-full border-none focus:outline-none focus:ring-0"
-                            placeholder="alex_manager@gmail.com" readonly />
-                    </div>
+                    
 
                     <!-- Phone Number Input -->
                     <div class="flex items-center border-b border-gray-300 py-2">
@@ -48,14 +40,15 @@
                             <label for="tenda-type" class="block text-sm font-medium text-gray-700">
                                 Type Tenda
                             </label>
-                            <select id="tenda-type"
+                            <select id="tendaType"
                                 class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                                 <option>Dekorasi</option>
-                                <!-- Add more options here if needed -->
+                                <option>Roder</option>
+                                <option>Canopy</option>
                             </select>
                         </div>
 
-                        <div class="flex-1">
+                         <div class="flex-1">
                             <label for="size" class="block text-sm font-medium text-gray-700">
                                 Ukuran
                             </label>
@@ -86,6 +79,7 @@
                             </svg>
                         </button>
                     </div>
+
                 </form>
             </div>
 
@@ -97,4 +91,29 @@
         </div>
     </div>
 </section>
+
+<!-- JavaScript -->
+<script>
+    document.getElementById('whatsappForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const tendaType = document.getElementById('tendaType').value;
+        const size = document.getElementById('size').value;
+        const message = document.getElementById('message').value;
+
+        // Nomor dari backend Laravel (tanpa awalan 0)
+        @if (isset($contact))
+            const phoneNumber = "62{{ ltrim($contact->nomor_wa, '0') }}";
+        @else
+            alert("Nomor wa tidak terdaftar")
+            return;
+        @endif
+
+        const text = `Halo admin,%0ASaya ingin memesan tenda dengan detail berikut:%0A- Type: ${tendaType}%0A- Ukuran: ${size}%0A- Pesan Tambahan: ${message}`;
+
+        const url = `https://wa.me/${phoneNumber}?text=${text}`;
+        window.open(url, '_blank');
+    });
+</script>
+
 @endsection

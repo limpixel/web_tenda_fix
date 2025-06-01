@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Web\HomeEasyBookingModel;
 use App\Models\Web\HomeHeroSectionModel;
 use App\Models\Product;
+use App\Models\Dashboard\ContactModel;
 
 use Illuminate\Http\Request;
 
@@ -19,7 +20,9 @@ class FEHomeController extends Controller
         $heroSections = HomeHeroSectionModel::all();
         $HomeEasyBook = HomeEasyBookingModel::paginate(10); // Tambahkan pagination
         $product = Product::all();
-        return view('web.home', compact('heroSections', 'HomeEasyBook', 'product'));
+        $contact = ContactModel::first();
+        
+        return view('web.home', compact('heroSections', 'HomeEasyBook', 'product', 'contact'));
     }
 
     /**
